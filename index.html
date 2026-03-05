@@ -2,448 +2,133 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TEC CONTAINER – Cargo Securing & Lifting Equipment Since 1976</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>TEC Container</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; color: #333; background: #f5f7fa; }
 
-    :root {
-      --red:    #c0392b;
-      --dark:   #1a1a1a;
-      --mid:    #2c2c2c;
-      --light:  #f5f5f5;
-      --grey:   #666;
-      --border: #ddd;
+    /* Header */
+    header {
+      background: #1a2e4a;
+      color: white;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
+    header .logo { font-size: 1.6rem; font-weight: 700; letter-spacing: 1px; }
+    header .logo span { color: #f0a500; }
+    nav a { color: #ccc; text-decoration: none; margin-left: 28px; font-size: 0.95rem; }
+    nav a:hover { color: white; }
 
-    body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--dark); background: #fff; }
-
-    /* ── NAV ── */
-    nav {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 48px; height: 68px;
-      background: #fff; border-bottom: 3px solid var(--red);
-      position: sticky; top: 0; z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
-    }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-logo-box {
-      width: 36px; height: 36px; background: var(--red);
-      display: grid; place-items: center; border-radius: 4px;
-    }
-    .nav-logo-box svg { width: 22px; height: 22px; fill: #fff; }
-    .nav-logo span { font-size: 1.15rem; font-weight: 800; letter-spacing: .06em; color: var(--dark); }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--dark); font-size: .88rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
-    .nav-links a:hover { color: var(--red); }
-    .nav-cta {
-      background: var(--red); color: #fff; border: none; cursor: pointer;
-      padding: 9px 22px; border-radius: 3px; font-size: .82rem; font-weight: 700;
-      letter-spacing: .06em; text-transform: uppercase;
-    }
-    .nav-cta:hover { background: #a93226; }
-
-    /* ── HERO ── */
+    /* Hero */
     .hero {
-      position: relative; min-height: 560px; display: flex; align-items: center;
-      background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 60%, #34495e 100%);
-      overflow: hidden;
+      background: linear-gradient(135deg, #1a2e4a 0%, #2e5090 100%);
+      color: white;
+      text-align: center;
+      padding: 90px 20px 80px;
     }
-    .hero-bg-pattern {
-      position: absolute; inset: 0;
-      background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.03) 0, rgba(255,255,255,.03) 1px, transparent 0, transparent 50%);
-      background-size: 20px 20px;
+    .hero h1 { font-size: 2.8rem; margin-bottom: 16px; }
+    .hero p { font-size: 1.15rem; color: #b8d0f0; max-width: 580px; margin: 0 auto 32px; }
+    .hero .btn {
+      background: #f0a500; color: #1a2e4a; padding: 14px 36px;
+      border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 1rem;
+      display: inline-block;
     }
-    .hero-accent {
-      position: absolute; right: 0; top: 0; bottom: 0; width: 42%;
-      background: linear-gradient(180deg, var(--red) 0%, #922b21 100%);
-      clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
-      opacity: .85;
-    }
-    .hero-content { position: relative; z-index: 2; padding: 64px 80px; max-width: 620px; }
-    .hero-eyebrow { color: var(--red); font-size: .78rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 16px; }
-    .hero h1 { color: #fff; font-size: 2.8rem; font-weight: 900; line-height: 1.15; text-transform: uppercase; }
-    .hero h1 em { color: var(--red); font-style: normal; }
-    .hero-sub { color: #ccc; margin-top: 20px; font-size: 1.05rem; line-height: 1.6; max-width: 480px; }
-    .hero-actions { display: flex; gap: 14px; margin-top: 36px; }
-    .btn-primary {
-      background: var(--red); color: #fff; padding: 13px 30px;
-      border-radius: 3px; text-decoration: none; font-weight: 700;
-      font-size: .88rem; letter-spacing: .06em; text-transform: uppercase;
-      border: 2px solid var(--red);
-    }
-    .btn-primary:hover { background: #a93226; border-color: #a93226; }
-    .btn-outline {
-      background: transparent; color: #fff; padding: 13px 30px;
-      border-radius: 3px; text-decoration: none; font-weight: 700;
-      font-size: .88rem; letter-spacing: .06em; text-transform: uppercase;
-      border: 2px solid rgba(255,255,255,.5);
-    }
-    .btn-outline:hover { border-color: #fff; }
-    .hero-stats {
-      position: absolute; bottom: 36px; right: 80px; z-index: 2;
-      display: flex; gap: 36px;
-    }
-    .stat { text-align: center; }
-    .stat-num { color: #fff; font-size: 2rem; font-weight: 900; }
-    .stat-label { color: rgba(255,255,255,.65); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+    .hero .btn:hover { background: #e09400; }
 
-    /* ── SECTION SHARED ── */
-    section { padding: 80px 64px; }
-    .section-tag { color: var(--red); font-size: .75rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 8px; }
-    .section-title { font-size: 2rem; font-weight: 900; text-transform: uppercase; color: var(--dark); }
-    .section-title span { color: var(--red); }
-    .section-sub { color: var(--grey); margin-top: 10px; font-size: .97rem; line-height: 1.6; max-width: 560px; }
-
-    /* ── PRODUCTS ── */
-    .products { background: var(--light); }
-    .products-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; flex-wrap: wrap; gap: 16px; }
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 24px; }
-    .product-card {
-      background: #fff; border: 1px solid var(--border); border-radius: 6px;
-      padding: 28px 24px; cursor: pointer;
-      transition: box-shadow .2s, border-color .2s, transform .2s;
-      border-top: 4px solid transparent;
+    /* Services */
+    .services { max-width: 1100px; margin: 60px auto; padding: 0 24px; }
+    .services h2 { text-align: center; font-size: 2rem; margin-bottom: 40px; color: #1a2e4a; }
+    .cards { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
+    .card {
+      background: white; border-radius: 8px; padding: 32px 24px; flex: 1;
+      min-width: 220px; max-width: 260px; text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
-    .product-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.1); border-top-color: var(--red); transform: translateY(-3px); }
-    .product-icon { width: 44px; height: 44px; background: #fdecea; border-radius: 8px; display: grid; place-items: center; margin-bottom: 16px; }
-    .product-icon svg { width: 24px; height: 24px; stroke: var(--red); fill: none; stroke-width: 1.8; }
-    .product-card h3 { font-size: .9rem; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; color: var(--dark); margin-bottom: 8px; }
-    .product-card p { font-size: .83rem; color: var(--grey); line-height: 1.55; }
+    .card .icon { font-size: 2.4rem; margin-bottom: 14px; }
+    .card h3 { font-size: 1.1rem; margin-bottom: 10px; color: #1a2e4a; }
+    .card p { font-size: 0.9rem; color: #666; line-height: 1.5; }
 
-    /* ── WHY ── */
-    .why { background: var(--dark); }
-    .why .section-title { color: #fff; }
-    .why .section-sub { color: #aaa; }
-    .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px; margin-top: 48px; }
-    .why-card {
-      border: 1px solid #3a3a3a; border-radius: 6px; padding: 28px 24px;
-      transition: border-color .2s;
-    }
-    .why-card:hover { border-color: var(--red); }
-    .why-card h3 { color: var(--red); font-size: .85rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 14px; }
-    .why-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .why-card li { color: #ccc; font-size: .85rem; line-height: 1.5; padding-left: 16px; position: relative; }
-    .why-card li::before { content: '›'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+    /* Stats */
+    .stats { background: #1a2e4a; color: white; padding: 50px 20px; text-align: center; }
+    .stats-grid { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; max-width: 900px; margin: 0 auto; }
+    .stat h3 { font-size: 2.4rem; color: #f0a500; }
+    .stat p { font-size: 0.9rem; color: #b8d0f0; margin-top: 4px; }
 
-    /* ── VALUES ── */
-    .values { background: #fff; }
-    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
-    .value-block { border-left: 3px solid var(--red); padding-left: 20px; }
-    .value-block h3 { font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--dark); margin-bottom: 12px; }
-    .value-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-    .value-block li { color: var(--grey); font-size: .85rem; line-height: 1.5; }
-
-    /* ── CTA BAND ── */
-    .cta-band {
-      background: var(--red); padding: 56px 64px;
-      display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
-    }
-    .cta-band-text h2 { color: #fff; font-size: 1.7rem; font-weight: 900; text-transform: uppercase; }
-    .cta-band-text p { color: rgba(255,255,255,.8); margin-top: 6px; font-size: .95rem; }
-    .btn-white {
-      background: #fff; color: var(--red); padding: 13px 32px; border-radius: 3px;
-      font-weight: 800; font-size: .88rem; text-transform: uppercase; letter-spacing: .06em;
-      text-decoration: none; white-space: nowrap;
-    }
-    .btn-white:hover { background: #f0f0f0; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #111; color: #aaa; padding: 52px 64px 32px;
-    }
-    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid #2a2a2a; }
-    .footer-brand p { font-size: .85rem; line-height: 1.7; margin-top: 12px; max-width: 280px; }
-    .footer-brand .brand-name { display: flex; align-items: center; gap: 8px; }
-    .footer-brand .brand-name span { color: #fff; font-weight: 800; font-size: 1.05rem; letter-spacing: .06em; }
-    .footer-brand .brand-box { width: 28px; height: 28px; background: var(--red); display: grid; place-items: center; border-radius: 3px; }
-    .footer-brand .brand-box svg { width: 16px; height: 16px; fill: #fff; }
-    footer h4 { color: #fff; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; margin-bottom: 14px; }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .footer-links a { color: #aaa; text-decoration: none; font-size: .85rem; }
-    .footer-links a:hover { color: var(--red); }
-    .footer-contact-item { display: flex; gap: 8px; font-size: .83rem; margin-bottom: 8px; }
-    .footer-contact-item strong { color: #fff; }
-    .footer-bottom { padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: .78rem; flex-wrap: wrap; gap: 8px; }
-    .footer-bottom a { color: #aaa; text-decoration: none; }
-    .footer-bottom a:hover { color: var(--red); }
-
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none; }
-      section { padding: 56px 24px; }
-      .hero-content { padding: 48px 24px; }
-      .hero h1 { font-size: 2rem; }
-      .hero-accent { display: none; }
-      .hero-stats { display: none; }
-      .values-grid { grid-template-columns: 1fr; }
-      .footer-top { grid-template-columns: 1fr; }
-      .cta-band { padding: 40px 24px; }
-    }
+    /* Footer */
+    footer { background: #111d2e; color: #888; text-align: center; padding: 24px; font-size: 0.85rem; }
+    footer a { color: #f0a500; text-decoration: none; }
   </style>
+
 </head>
 <body>
 
-<!-- ── NAVIGATION ── -->
-<nav>
-  <a class="nav-logo" href="#">
-    <div class="nav-logo-box">
-      <svg viewBox="0 0 24 24"><path d="M2 8l10-6 10 6v10l-10 6L2 18V8z"/></svg>
-    </div>
-    <span>TEC CONTAINER</span>
-    v2
-  </a>
-  <ul class="nav-links">
-    <li><a href="#products">Products</a></li>
-    <li><a href="#why">Why Us</a></li>
-    <li><a href="#values">Values</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <button class="nav-cta">Request a Quote</button>
-</nav>
+  <!-- Header -->
+  <header>
+    <div class="logo">TEC <span>Container</span></div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">Fleet</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
 
-<!-- ── HERO ── -->
-<section class="hero">
-  <div class="hero-bg-pattern"></div>
-  <div class="hero-accent"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Cargo Securing &amp; Lifting Equipment Since 1976</p>
-    <h1>Safety &amp; Efficiency<br><em>Solutions</em><br>For Every Port</h1>
-    <p class="hero-sub">
-      Specialized lifting and lashing systems trusted by DP World, MSC, and DNCS
-      across 80+ countries. European design, manufactured in Spain.
-    </p>
-    <div class="hero-actions">
-      <a class="btn-primary" href="#products">Our Products</a>
-      <a class="btn-outline" href="#contact">Contact Us</a>
-    </div>
-  </div>
-  <div class="hero-stats">
-    <div class="stat"><div class="stat-num">1976</div><div class="stat-label">Founded</div></div>
-    <div class="stat"><div class="stat-num">80+</div><div class="stat-label">Countries</div></div>
-    <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Years Exp.</div></div>
-  </div>
-</section>
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Global Container Solutions</h1>
+    <p>Reliable, efficient and secure container logistics for your international shipping needs.</p>
+    <a href="#" class="btn">Get a Quote</a>
+  </section>
 
-<!-- ── PRODUCTS ── -->
-<section id="products" class="products">
-  <div class="products-header">
-    <div>
-      <p class="section-tag">What We Make</p>
-      <h2 class="section-title">Our <span>Products</span></h2>
-      <p class="section-sub">Cargo securing &amp; handling systems engineered for safety, reliability and efficiency.</p>
-    </div>
-  </div>
-  <div class="products-grid">
-    <div class="product-card">
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="1"/><path d="M7 7V5a2 2 0 0 1 4 0v2M13 7V5a2 2 0 0 1 4 0v2"/></svg>
+  <!-- Services -->
+  <section class="services">
+    <h2>Our Services</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🚢</div>
+        <h3>Ocean Freight</h3>
+        <p>Full and less-than-container load shipments to major ports worldwide.</p>
       </div>
-      <h3>Shore Power Supply</h3>
-      <p>On Shore Power (OPS) systems that allow vessels to maintain full operations while docked.</p>
-    </div>
-    <div class="product-card">
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24"><path d="M3 9l4-4 4 4 4-4 4 4"/><path d="M3 15l4-4 4 4 4-4 4 4"/></svg>
+      <div class="card">
+        <div class="icon">🏗️</div>
+        <h3>Container Leasing</h3>
+        <p>Flexible short and long-term leasing options for all container types.</p>
       </div>
-      <h3>Over Height Frames</h3>
-      <p>Special handling equipment for oversized containerized cargo and out-of-gauge loads.</p>
-    </div>
-    <div class="product-card">
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l4 4"/></svg>
+      <div class="card">
+        <div class="icon">📦</div>
+        <h3>Storage & Depot</h3>
+        <p>Secure container storage and depot services at key logistics hubs.</p>
       </div>
-      <h3>Spreaders for Containers</h3>
-      <p>Innovative lifting solutions ensuring safe and efficient container operations worldwide.</p>
-    </div>
-    <div class="product-card">
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 22V12M12 12L5 6M12 12l7-6"/><rect x="4" y="2" width="16" height="6" rx="1"/></svg>
+      <div class="card">
+        <div class="icon">🔧</div>
+        <h3>Maintenance & Repair</h3>
+        <p>Certified inspection, maintenance, and repair for your entire fleet.</p>
       </div>
-      <h3>Lashing Safety Cages</h3>
-      <p>Improving stevedore security while reducing operational costs at ports globally.</p>
     </div>
-    <div class="product-card">
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24"><path d="M6 12h12M6 12l4-4M6 12l4 4"/></svg>
-      </div>
-      <h3>Lashing Equipment</h3>
-      <p>Full range of standard and tailor-made products for container and ro-ro lashing.</p>
-    </div>
-    <div class="product-card">
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      </div>
-      <h3>Hook Frames</h3>
-      <p>Transform an RS/STS into a versatile mobile crane for different uses and purposes.</p>
-    </div>
-    <div class="product-card">
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><path d="M12 8v8M9 21h6M12 16l-3 5M12 16l3 5"/></svg>
-      </div>
-      <h3>Wind Industry Equipment</h3>
-      <p>Prioritize worker safety while reducing downtime and increasing productivity.</p>
-    </div>
-    <div class="product-card">
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="1"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <h3>Pipe Handling Spreader</h3>
-      <p>TEC Container spreader for pipe handling under Reach Stacker configurations.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ── WHY TEC CONTAINER ── -->
-<section id="why" class="why">
-  <p class="section-tag" style="color:#e74c3c">Why Choose Us</p>
-  <h2 class="section-title">Why <span>TEC CONTAINER?</span></h2>
-  <p class="section-sub">Over four decades of trust, innovation, and European manufacturing excellence.</p>
-  <div class="why-grid">
-    <div class="why-card">
-      <h3>For Reliability</h3>
-      <ul>
-        <li>On-time deliveries guaranteed</li>
-        <li>Complete documentation &amp; certification per regulation</li>
-        <li>Continuous after-sales support worldwide</li>
-      </ul>
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stats-grid">
+      <div class="stat"><h3>12,000+</h3><p>Containers in Fleet</p></div>
+      <div class="stat"><h3>85</h3><p>Countries Served</p></div>
+      <div class="stat"><h3>25+</h3><p>Years of Experience</p></div>
+      <div class="stat"><h3>99.2%</h3><p>On-Time Delivery</p></div>
     </div>
-    <div class="why-card">
-      <h3>For Adaptability</h3>
-      <ul>
-        <li>Identify solutions to your specific operational issues</li>
-        <li>Designs adapted to each customer's needs</li>
-        <li>Any crane, any port, any industry</li>
-      </ul>
-    </div>
-    <div class="why-card">
-      <h3>For Prestige</h3>
-      <ul>
-        <li>Trusted by DP World, MSC, and DNCS</li>
-        <li>Products in 80+ countries</li>
-        <li>European design &amp; manufacturing: Made in Spain</li>
-      </ul>
-    </div>
-    <div class="why-card">
-      <h3>For Efficiency &amp; Safety</h3>
-      <ul>
-        <li>Designs adapted to specific operations</li>
-        <li>Higher safety factors than market standards</li>
-        <li>Certified by DNV, BV, SGS — continuously audited</li>
-      </ul>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ── VALUES ── -->
-<section id="values" class="values">
-  <p class="section-tag">Our Pillars</p>
-  <h2 class="section-title">Our <span>Values</span></h2>
-  <div class="values-grid">
-    <div class="value-block">
-      <h3>Safety</h3>
-      <ul>
-        <li>Higher safety factors across all products</li>
-        <li>Decades of real-world experience</li>
-        <li>Highly tested before delivery</li>
-        <li>DNV, BV, SGS continuous inspections</li>
-        <li>Far beyond international regulations</li>
-      </ul>
-    </div>
-    <div class="value-block">
-      <h3>Quality</h3>
-      <ul>
-        <li>Continuous welding &amp; certified welders</li>
-        <li>Own production facilities</li>
-        <li>100% European manufacture</li>
-        <li>Full certifications &amp; instructions provided</li>
-        <li>After-sales service in 80 countries</li>
-      </ul>
-    </div>
-    <div class="value-block">
-      <h3>R&amp;D</h3>
-      <ul>
-        <li>Tailor-made engineering solutions</li>
-        <li>Own patents &amp; proprietary designs</li>
-        <li>Collaborations with top institutions</li>
-        <li>Any crane, any port, any industry</li>
-        <li>Constant product innovation</li>
-      </ul>
-    </div>
-  </div>
-</section>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 TEC Container. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+  </footer>
 
-<!-- ── CTA BAND ── -->
-<div class="cta-band" id="contact">
-  <div class="cta-band-text">
-    <h2>Need a custom lifting solution?</h2>
-    <p>Talk to our engineering team — we'll adapt our designs to your exact requirements.</p>
-  </div>
-  <a class="btn-white" href="mailto:teccontainer@teccontainer.com">Request More Info</a>
-</div>
-
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div class="brand-name">
-        <div class="brand-box"><svg viewBox="0 0 24 24"><path d="M2 8l10-6 10 6v10l-10 6L2 18V8z"/></svg></div>
-        <span>TEC CONTAINER</span>
-      </div>
-      <p>Cargo securing and lifting equipment since 1976. European design, manufactured in Spain, deployed across 80+ countries.</p>
-    </div>
-    <div>
-      <h4>Products</h4>
-      <ul class="footer-links">
-        <li><a href="#">Shore Power</a></li>
-        <li><a href="#">Over Height Frames</a></li>
-        <li><a href="#">Spreaders</a></li>
-        <li><a href="#">Lashing Cages</a></li>
-        <li><a href="#">Hook Frames</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Company</h4>
-      <ul class="footer-links">
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Quality Policy</a></li>
-        <li><a href="#">Legal Disclaimer</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Contact</h4>
-      <div class="footer-contact-item"><strong>Tel:</strong> +34 91 302 1638</div>
-      <div class="footer-contact-item"><strong>Email:</strong> teccontainer@teccontainer.com</div>
-      <div class="footer-contact-item"><strong>Office:</strong> Duero 1, Mejorada del Campo, Madrid, Spain</div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 Tec Container S.A. All rights reserved.</span>
-    <div style="display:flex;gap:20px">
-      <a href="#">Legal Notice</a>
-      <a href="#">Cookies Policy</a>
-      <a href="#">LinkedIn</a>
-    </div>
-  </div>
-</footer>
-
-<!-- ── AGENTFORCE CHAT ── -->
-<!--<script type='text/javascript' 
-    id='init-agentforce-messaging' 
-    src='https://test-service.force.com/embeddedservice/agentforcemessaging/0.3/init.js' 
-    onload='agentforce_messaging.init({
-        siteUrl: "https://wam-global.github.io/agentforce-demo/",
-        agentApiConfiguration: {
-            agentId: "0XxRR0000007fsr0AA", 
-            domainUrl: "https://teccontainer--dev.sandbox.my.salesforce.com"
-        },
-        uiConfiguration: {}
-    });'>
-</script>-->
-
-
+</body>
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
@@ -463,7 +148,4 @@
 	};
 </script>
 <script type='text/javascript' src='https://teccontainer--dev.sandbox.my.site.com/ESWAgentforceWebLeadColle1772735205445/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-
-
-</body>
 </html>
